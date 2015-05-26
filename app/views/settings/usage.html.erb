@@ -1,0 +1,33 @@
+<div class='well'>
+  <div class="pull-right">
+      <%= link_to "New Setting",  new_setting_path, class: "btn btn-small btn-info" %>
+      <%= link_to "Usage of Global Settings",  usage_settings_path, class: "btn btn-small btn-info" %>
+  </div>
+</div>
+
+<div class="well span6 offset5">
+  <center><h2>Usage of Global Settings</h2></center>
+</div>
+
+
+<div class="well span6 offset5">
+  <p>We can create any number of global settings to be used in the app. Create new setting and can be used to eanble/disable a feature in the app. We can create global variabls as well over her to be used throught the system.</p>
+  <ul>
+    <li>
+      <h4>Give the setting a name you want to give</h4>
+      e.g Enable Emailing
+    </li>
+    <li>
+      <h4>Select data type we want to give to this setting</h4>
+      e.g boolean, string, integer, float
+    </li>
+    <li>
+      <h4>Give your setting value</h4>
+      e.g 1) check/uncheck for boolean type 2) Value for any other data type
+    </li>
+  </ul>
+  <p>We can easily setup the global settings from console like</p>
+  <h4>Setting.url = "www.google.com"</h4>
+  <p>And to retrieve from console</p>
+  <h4>Setting.url</h4>
+</div>

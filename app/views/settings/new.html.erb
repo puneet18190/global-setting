@@ -1,0 +1,55 @@
+<div class='well'>
+  <div class="pull-right">
+      <%= link_to "Back to settings list",  settings_path, class: "btn btn-small btn-info" %>
+      <%= link_to "Usage of Global Settings",  usage_settings_path, class: "btn btn-small btn-info" %>
+  </div>
+</div>
+
+<div class="well span6 offset5">
+  <%= form_for @setting do|f|%>
+    <div class="row">
+        <div class="span12">
+             <%= f.label :name, "Setting Name"%>
+             <%= f.text_field :name, autofocus: true, placeholder: "Enter setting name", class: "form-control", required: "true" %>
+        </div>
+        <div class="span12">
+             <%= f.label :env, "Environment"%>
+             <% available_envs = ["development", "staging", "production"]%>
+             <%= f.select :env, options_for_select(available_envs.collect{|t| [ t.titleize, t] }), :class => 'form-control' %>
+        </div>
+        <div class="span12">
+             <%= f.label :setting_type, "Setting Type"%>
+             <% available_types = ["string", "integer", "float", "boolean"]%>
+             <%= f.select :setting_type, options_for_select(available_types.collect{|t| [ t.titleize, t] }), :class => 'form-control' %>
+        </div>
+        <div class="span12 value_div">
+             <%= f.label :value, "Value"%>
+             <%= f.text_field :value, placeholder: "Enter value", class: "form-control" %>
+        </div>
+        <div class="span12">
+            <hr>
+            <%= f.submit "Create", class: "btn btn-small btn-info" %>
+        </div>
+    </div>
+  <% end %>
+  <div class="span12 check_box_div hide">
+       <%= check_box_tag "setting[value]", "true" %>
+  </div>
+  <div class="span12 text_field_div hide">
+       <%= text_field_tag "setting[value]", "", placeholder: "Enter value", class: "form-control" %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $(document).on('change', "#setting_setting_type", function(e){
+      e.preventDefault();
+      var current_val = $(this).val();
+      if(current_val == "boolean"){
+        $('.value_div').html($('.check_box_div').html());
+      }else{
+        $('.value_div').html($('.text_field_div').html());
+      }
+    })
+  });
+</script>

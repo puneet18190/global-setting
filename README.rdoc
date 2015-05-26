@@ -1,0 +1,16 @@
+== README
+
+
+Created a model having three fields "name", "setting_type" and "value". "Value" field is storing every type of settings as a string. Then, I overridden the value method which is returning the value according to the "setting_type" saved. So, every setting object will have value as per it's data-type wherever we use in the app. Included unit tests for the model.
+
+Rails 4 by default provides caching on model. It means whenever we query to database it stores the result in cache and return same next time we query  for same.
+
+
+To add a new global setting just use
+
+Setting.admin_email = "admin@something.com"
+
+
+To retrieve the global setting use
+
+Setting.admin_eamil
